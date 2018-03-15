@@ -1,0 +1,6 @@
+[
+  {"IdCategory": 0 ,"titulo": "General", "descripcion":"Productos"},
+  {"IdCategory": 1 ,"titulo": "Comunicacion", "descripcion":"Telefonos moviles, Fijos, radios de onda corta, radios de onda larga y todo tipo de equipos relacionados con la comunicacion."},
+  {"IdCategory": 2 ,"titulo": "Imagen", "descripcion":"Equipos fotograficos, grabacion de Video y todo tipo de equipos relacionados con la Imagen."},
+  {"IdCategory": 3 ,"titulo": "VideoConsolas", "descripcion":"Videoconsolas fijas o portatiles, mandos y complementos."}
+]

@@ -1,0 +1,5 @@
+
+[
+  {"IdUsuario": 1 ,"nombre": "prueba", "pass": "prueba"},
+  {"IdUsuario": 2 ,"nombre": "Jaime", "pass": "123456789"}
+]
