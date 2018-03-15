@@ -1,5 +1,8 @@
 # ERP-ComAsinc  
   
+## Version 0.0.2  
+Implementacion del guardado de datos en el servidor.  
+  
 ## Version 0.0.1  
 Creacion de los ficheros json.  
 Implementacion de las funciones para cargar los datos a indexedDB.  

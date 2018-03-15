@@ -14,6 +14,7 @@ if (window.XMLHttpRequest) {//Comprobamos que el navegador soporte XMLREQUEST
 
 requestAjax.open("POST","../json/com_compact.json",true)//Abrimos de forma sincrona, para que continue una vez este abierto
 requestAjax.send();
+
 requestAjax.onreadystatechange = function(){//Cuando la solicitud recibe la respuesta...
   if (this.readyState == 4 && this.status == 200){//Si la solicitud es ta completa (4) y es estado es correcto (200)
     var compact = JSON.parse(this.responseText);//Obtenemos el objeto compacto con todos los linetrales necesarios para indexedDB
@@ -268,3 +269,90 @@ requestAjax.onreadystatechange = function(){//Cuando la solicitud recibe la resp
   }
 };
 
+
+function saveSessionOnServer(){
+  var requestAjax; // Variable para obtener los objetos usuario del JSON
+  
+  if (window.XMLHttpRequest) {//Comprobamos que el navegador soporte XMLREQUEST
+    requestAjax = new XMLHttpRequest();//Creamos el objeto XMLHttpRequest para navegadores nuevos
+    
+  } else {
+    requestAjax = new ActiveXObject("Microsoft.XMLHTTP");//Creamos el objeto ActiveXObject para navegaores antiguos
+    
+  }
+  
+  requestAjax.open("POST","../json/com_compact.json",true)//Abrimos de forma sincrona, para que continue una vez este abierto
+  requestAjax.send();
+  requestAjax.onreadystatechange = function(){
+    if (this.readyState == 4 && this.status == 200){
+      var compactDB = getCompactDB();
+      console.log(compactDB);
+    }
+  } 
+}
+
+function getCompactDB()
+/*Funcion que obtiene los valores actuales de indexedDB*/
+{
+  var compact = {categorias:[],users:[],shops:[],stock:[]};//Variable que almacenara todos los objetos de indexedDB en un objeto Literal
+  
+  var db;//Variable que almacenara la base de datos
+  var db_name = "ManchaStore";//Nombre de la base de datos
+  var request = indexedDB.open(db_name,1);// Creacion de la base de datos
+  
+  request.onerror = function(event){//Si fallo la creacion... error
+    console.log(event.target.error.name);
+    console.log(event.target.error.message);
+  }
+  
+  request.onsuccess = function (event){
+    db = event.target.result;
+
+     var almacenCategorias = db.transaction("categorias").objectStore("categorias");
+     almacenCategorias.openCursor().onsuccess = function(event){
+     var cursor = event.target.result;
+       if(cursor){
+        compact.categorias.push(cursor.value); 
+        cursor.continue()
+      }else{
+        var almacenStock = db.transaction("stock").objectStore("stock");
+        almacenStock.openCursor().onsuccess = function(event){
+          var cursor = event.target.result;
+          if(cursor){
+              compact.stock.push(cursor.value);
+              cursor.continue();
+            }else{
+              var almacenUsers = db.transaction("users").objectStore("users");
+              almacenUsers.openCursor().onsuccess = function(event){
+                var cursor = event.target.result;
+                if(cursor){
+                 compact.users.push(cursor.value);
+                 cursor.continue();
+                }else{
+                  var almacenShops = db.transaction("shops").objectStore("shops");
+                  almacenShops.openCursor().onsuccess = function(event){
+                    var cursor = event.target.result;
+                    if(cursor){
+                      compact.shops.push(cursor.value)
+                    cursor.continue();
+                  }else{
+                     return compact;
+                  }
+                };
+
+               }
+              };
+
+            }
+          };
+      }
+    };
+     
+     
+ 
+     
+ 
+     
+
+  };
+}

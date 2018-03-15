@@ -215,6 +215,11 @@ function UserLoged(arrayCookie)
   pInfo2.appendChild(document.createTextNode(arrayCookie[2]));
   divInfo.appendChild(pInfo2)
 
+  var btnSaveData = document.createElement("button");
+  btnSaveData.className = "btn btn-info";
+  btnSaveData.appendChild(document.createTextNode("Guardar Sesion"));
+  btnSaveData.addEventListener("click",saveSessionOnServer);
+
   return divRow;
 }
 
