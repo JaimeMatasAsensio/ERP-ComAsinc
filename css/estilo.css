@@ -1,0 +1,203 @@
+@charset "utf-8";
+/*
+Colores para la pagina:
+*/
+.rgba-primary-0 { color: rgba( 41, 81,109,1) }
+.rgba-primary-1 { color: rgba(112,142,164,1) }
+.rgba-primary-2 { color: rgba( 72,110,136,1) }
+.rgba-primary-3 { color: rgba( 18, 55, 82,1) }
+.rgba-primary-4 { color: rgba(  3, 33, 55,1) }
+
+/*estilos compartidos*/
+header,footer,nav{
+  background-color: rgba( 41, 81,109,1);
+  color: white;
+}
+
+/*estilo para header y sus elementos*/
+header{
+  padding: 10px 0;
+  border-bottom: 4px solid rgba( 72,110,136,1);
+}
+#logo{
+  width: 140px;
+  height: 100px;
+  vertical-align: middle;
+}
+#cabeceraPractica{
+  margin-top: 10px;
+}
+
+/*estilos para nav y sus elementos*/
+nav{
+  border-bottom: 4px solid rgba( 72,110,136,1);
+}
+#inicio{
+  background-color: rgba( 72,110,136,1);
+}
+.nav-pills>li>a{
+  color: rgb(85, 116, 184);
+  border-radius: 0px;
+  font-weight: bold;
+}
+.nav-pills>li:hover{
+  color: rgb(139, 166, 224);
+  cursor: pointer;
+}
+.nav-pills>li:action{
+  color: black;
+}
+#drop{
+  display: none;
+}
+.drop-cont{
+  position:absolute;
+  z-index: 1;
+  width: 200px;
+  height: 0px;
+  background-color: rgba( 72,110,136,1);
+}
+
+.drop-cont a {
+  display: none;
+  color: black;
+  font-weight: bold;
+  padding: 12px 16px;
+  text-decoration: none;
+  text-align: left;
+}
+.drop-cont a:hover{
+  cursor: pointer;
+  background-color: rgba(3, 33, 55,1);
+  color: white;
+}
+
+/*estilos para el contenedor principal y sus elementos*/
+#main-cont{
+  min-height: calc(100vh - 305px);
+  padding: 10px 0;
+}
+
+#main-cont,#closeWindow,#ShopsMenu{
+  background-color: rgb(192, 220, 240);
+}
+
+#ShopsMenu,#tiendas,#items{
+  border-bottom: 2px solid rgba(3, 33, 55, 1);
+  border-top: 2px solid rgba(3, 33, 55, 1);
+}
+
+#closeWindow{
+  border-bottom: 2px solid rgba(3, 33, 55, 1);
+  padding: 10px 0px;
+  display: flex;
+  justify-content: center;
+}
+
+#items{
+  border-top:none;
+}
+#tiendas,#items{
+  margin:10px 0px;
+  padding:10px 0px;
+}
+
+#divTienda{
+  min-height: 200px;
+}
+
+#titleStore,.cabProd{
+  text-decoration: underline;
+  text-decoration-color: rgba(3, 33, 55, 1); 
+}
+
+.detProd{
+  border-bottom: 2px solid rgba(3, 33, 55, 1);
+  margin-bottom: 10px;
+  min-height: 300px;
+}
+
+.imgPro,.imgProDet{
+  width: 250px;
+  height: auto;
+  padding: 8px;
+  border-bottom-left-radius: 32px;
+  border-top-right-radius: 32px;
+}
+
+.imgProDet{
+  width: 100%;
+}
+
+.infoPro{
+  border-left: 2px solid rgba(3, 33, 55, 1);
+}
+
+.btn-default{
+  margin-right: 5px;
+}
+
+.infoTienda{
+  margin-left: 5px;
+}
+
+.formularios{
+
+  width: 80%;
+  margin: 10px auto;
+  padding: 10px 0px;
+  border-top: 2px solid rgba(3, 33, 55, 1);
+  border-bottom: 2px solid rgba(3, 33, 55, 1);
+}
+
+.btnForms{
+  display: flex;
+  justify-content: center;
+  align-content: space-between;
+}
+/*estilos para la ventana modal*/
+#headmodal{
+  font-variant: small-caps;
+  font-weight: bold;
+  color: green;
+  text-align: center;
+}
+.textomodal{
+  font-weight: bold;
+  font-style: italic;
+}
+
+#headmodal-error{
+  font-variant: small-caps;
+  font-weight: bold;
+  color: rgb(255, 6, 6);
+  text-align: center;
+}
+.textomodal-error{
+  color: rgb(255, 6, 6);
+}
+
+/*Estilos para el formulario de login*/
+#imgUser{
+  width: 80px;
+  height: auto;
+  background-color: white;
+  border-top-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+/*estilos para el footer y sus elementos*/
+footer{
+  text-align: center;
+  border-top: 4px solid rgba( 72,110,136,1);
+}
+#divTienda .list-group{
+  width: 50%;
+  margin: 10px auto;
+}
+
+.list-group-item:hover{
+  cursor: pointer;
+  background-color: rgba(  3, 33, 55,1);
+  color: white;
+}

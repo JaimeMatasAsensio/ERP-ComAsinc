@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es-ES" style="font-family:Sans-Serif;">
+<head>
+  <meta charset="UTF-8">
+  <title>Practica tema 5 ERP - DOM</title>
+  <link rel="shortcut icon" href="../imagenes/icon.png" type="image/x-icon">
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/estilo.css">
+</head>
+<body>
+  <header class="container-fluid">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-2">
+          <img class="img-rounded col-md-2" id="logo" src="../imagenes/icon.png" alt="Icono ERP" title="Logo ERP">
+        </div>
+        <h1 class="col-md-7" id="cabeceraPractica">Practica Tema 7 ERP con Formularios</h1>
+        <div class="col-md-3" id="formLogIn">
+          <form name="login" id="login" method="post">
+            <div class="form-group form-group-sm">
+              <label for="nameUser">Nombre Usuario</label>
+              <input type="text" class="form-control" name="nameUser" placeholder="Nombre de usuario" autocomplete="off">
+            </div>
+            <div class="form-group form-group-sm">
+              <label for="passUser">Contraseña</label>
+              <input type="password" class="form-control" name="passUser" placeholder="Contraseña de usuario" autocomplete="off">
+            </div>
+            <!-- Muy Importante que los inputs sean de tipo "button" para evitar la recarga de la pagina -->           
+            <input type="button" id="btnLogin" class="btn btn-success btn-sm" value="Log In" data-toggle="modal" data-target="#infoModal">
+            <input type="reset" class="btn btn-default btn-sm" value=Clear>
+          </form>
+        </div>
+      </div>
+    </div>
+  </header>
+  <nav class="container-fliud">
+    <div class="container" id="nav-cont">
+      <div class="row">
+        <ul class="nav nav-pills" id="Nav" role="tablist">
+          <li class="active" id="inicio"><a href="#">Inicio</a></li>
+          <li id="navTiendas"><a>Tiendas</a></li>
+          <li id="navProductos"><a>Productos</a></li>
+          <li id="navCategorias"><a>Categorias</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <main class="container-fluid">
+    
+    <div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="ModalLabel"></h4>
+            </div>
+            <div class="modal-body" id="ModalBody">
+              
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <div class="container" id="ShopsMenu">
+      <div class="row text-center">
+
+      </div>
+    </div>
+    <div class="container" id="main-cont">
+
+    </div>
+    <div class="container" id="closeWindow">
+
+    </div>
+  </main>
+  <footer class="container-fluid">
+    <div class="container">
+      <div class="row">
+        <h4 class=" col-md-6">Desarrollo Web en Entorno Cliente</h4>
+        <h5 class=" col-md-6">Desarrollo de Aplicaciones Web</h5>
+      </div>
+      <div class="row">
+        <h5 class=" col-md-6">I.E.S. Maestre de Calatrava - Ciudad Real</h5>
+        <h5 class=" col-md-6">Jaime Matas Asensio</h5>
+      </div>
+    </div>
+  </footer>
+</body>
+<!-- Scripts necesarios para bootstrap -->
+<script src="../js/jquery-3.3.1.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+
+
+<script src="../js/erp_err.js"></script>
+<script src="../js/erp_stroreHouse.js"></script>
+<script src="../js/erp_coords.js"></script>
+<script src="../js/erp_category.js"></script>
+<script src="../js/erp_shop.js"></script>
+<script src="../js/erp_product.js"></script>
+<!--
+<script src="../js/erp_init.js"></script>
+-->
+<script src="../js/IndDB_const.js"></script>
+<script src="../js/IndDB_init.js"></script>
+
+<script src="../js/form_users.js"></script>
+<script src="../js/form_elements.js"></script>
+<script src="../js/form_category.js"></script>
+<script src="../js/form_product.js"></script>
+
+<script src="../js/bom_ProductWindows.js"></script>
+
+<script src="../js/dom_populate.js"></script>
+<script src="../js/dom_navDropDown.js"></script>
+<!--<script src="../js/erp_test.js"></script>-->
+</html>
