@@ -1,7 +1,8 @@
 "use strict";
 /*Documento para crear las distintas funciones que cargaran datos desde Store */
-initDB();
-//init();
+
+//initDB();//YA NO ES NECESARIO, la carga se hace con AJAX y JSON
+//init();//YA NO ES NECESARIO, la carga se realiza atraves de indexedDB
 
 var Store = StoreHouse.getInstance();
 var IdMainCont = document.getElementById("main-cont");

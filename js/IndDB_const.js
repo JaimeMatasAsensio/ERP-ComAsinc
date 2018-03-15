@@ -83,12 +83,12 @@ const coord = [
   {longitud: 2, latitud:2},
   {longitud: 3, latitud:3},
 ];
-
+/*
 const users = [
   {IdUsuario: 1 ,nombre: "prueba", pass: "prueba"},
   {IdUsuario: 2 ,nombre: "Jaime", pass: "123456789"}
 ];
-
+*/
 const shops = [
   {
     cif: "134568",
