@@ -219,6 +219,7 @@ function UserLoged(arrayCookie)
   btnSaveData.className = "btn btn-info";
   btnSaveData.appendChild(document.createTextNode("Guardar Sesion"));
   btnSaveData.addEventListener("click",saveSessionOnServer);
+  divInfo.appendChild(btnSaveData);
 
   return divRow;
 }

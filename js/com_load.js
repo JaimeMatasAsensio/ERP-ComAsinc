@@ -270,28 +270,16 @@ requestAjax.onreadystatechange = function(){//Cuando la solicitud recibe la resp
 };
 
 
-function saveSessionOnServer(){
-  var requestAjax; // Variable para obtener los objetos usuario del JSON
+
+
+
+function sendSessionToServer(db)
+/*funcion que envia los datos al servidor*/
+{
   
-  if (window.XMLHttpRequest) {//Comprobamos que el navegador soporte XMLREQUEST
-    requestAjax = new XMLHttpRequest();//Creamos el objeto XMLHttpRequest para navegadores nuevos
-    
-  } else {
-    requestAjax = new ActiveXObject("Microsoft.XMLHTTP");//Creamos el objeto ActiveXObject para navegaores antiguos
-    
-  }
-  
-  requestAjax.open("POST","../json/com_compact.json",true)//Abrimos de forma sincrona, para que continue una vez este abierto
-  requestAjax.send();
-  requestAjax.onreadystatechange = function(){
-    if (this.readyState == 4 && this.status == 200){
-      var compactDB = getCompactDB();
-      console.log(compactDB);
-    }
-  } 
 }
 
-function getCompactDB()
+function saveSessionOnServer()
 /*Funcion que obtiene los valores actuales de indexedDB*/
 {
   var compact = {categorias:[],users:[],shops:[],stock:[]};//Variable que almacenara todos los objetos de indexedDB en un objeto Literal
@@ -334,9 +322,26 @@ function getCompactDB()
                     var cursor = event.target.result;
                     if(cursor){
                       compact.shops.push(cursor.value)
-                    cursor.continue();
+                      cursor.continue();
                   }else{
-                     return compact;
+                    //Realizamos la conexion al servidor para enviar el fichero
+                    var requestAjax; // Variable para obtener los objetos usuario del JSON
+                    
+                    if (window.XMLHttpRequest) {//Comprobamos que el navegador soporte XMLREQUEST
+                      requestAjax = new XMLHttpRequest();//Creamos el objeto XMLHttpRequest para navegadores nuevos
+                      
+                    } else {
+                      requestAjax = new ActiveXObject("Microsoft.XMLHTTP");//Creamos el objeto ActiveXObject para navegaores antiguos
+                      
+                    }
+                    console.log("Valores de indexedDB ahora mismo...");
+                    console.log(compact);
+                    var compactJSON = JSON.stringify(compact);
+                    console.log(compactJSON);
+                    var cookies = giveMeCookies();
+                    requestAjax.open("POST","../json/com_compact.json?",true)//Abrimos de forma sincrona, para que continue una vez este abierto
+                    requestAjax.send("compact=" + compactJSON + "&user=" + cookies[1]);
+                    
                   }
                 };
 
@@ -346,13 +351,7 @@ function getCompactDB()
             }
           };
       }
-    };
-     
-     
- 
-     
- 
-     
+    };  
 
   };
 }
