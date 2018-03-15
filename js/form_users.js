@@ -218,6 +218,8 @@ function UserLoged(arrayCookie)
   var btnSaveData = document.createElement("button");
   btnSaveData.className = "btn btn-info";
   btnSaveData.appendChild(document.createTextNode("Guardar Sesion"));
+  btnSaveData.setAttribute("data-toggle","modal");
+  btnSaveData.setAttribute("data-target","#infoModal");
   btnSaveData.addEventListener("click",saveSessionOnServer);
   divInfo.appendChild(btnSaveData);
 

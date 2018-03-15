@@ -325,27 +325,29 @@ function saveSessionOnServer()
                       cursor.continue();
                   }else{
                     //Realizamos la conexion al servidor para enviar el fichero
-                    var requestAjax; // Variable para obtener los objetos usuario del JSON
+                    var request; // Variable para obtener los objetos usuario del JSON
                     
                     if (window.XMLHttpRequest) {//Comprobamos que el navegador soporte XMLREQUEST
-                      requestAjax = new XMLHttpRequest();//Creamos el objeto XMLHttpRequest para navegadores nuevos
+                      request = new XMLHttpRequest();//Creamos el objeto XMLHttpRequest para navegadores nuevos
                       
                     } else {
-                      requestAjax = new ActiveXObject("Microsoft.XMLHTTP");//Creamos el objeto ActiveXObject para navegaores antiguos
+                      request = new ActiveXObject("Microsoft.XMLHTTP");//Creamos el objeto ActiveXObject para navegaores antiguos
                       
                     }
-                    console.log("Valores de indexedDB ahora mismo...");
-                    console.log(compact);
                     var compactJSON = JSON.stringify(compact);
-                    //console.log(compactJSON);
                     var cookies = giveMeCookies();
-                    console.log("Nombre del usuario: " + cookies[1]);
-                    requestAjax.open("POST","../json/com_saveSession.php",true)//Abrimos de forma sincrona, para que continue una vez este abierto
-                    requestAjax.send("compact=" + compactJSON + "&user=" + cookies[1]);
-                    requestAjax.onreadystatechange = function(){//Cuando la solicitud recibe la respuesta...
+
+                    request.open("POST","../json/com_saveSession.php")//Abrimos de forma asincrona
+                    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");//Insertamos esta cabecera
+                    request.send("user=" + cookies[1]+"&compact=" + compactJSON);//Añadimos las variables
+
+                    request.onreadystatechange = function(){//Cuando la solicitud recibe la respuesta...
                       if (this.readyState == 4 && this.status == 200){
-                        console.log("Sesion Guardada")
+                        WriteSuccessModal("Sesion Guardada",this.responseText);
+                                               
+
                       }
+                    }
                   }
                 };
 
