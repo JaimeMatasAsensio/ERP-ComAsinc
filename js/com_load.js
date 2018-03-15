@@ -337,9 +337,10 @@ function saveSessionOnServer()
                     console.log("Valores de indexedDB ahora mismo...");
                     console.log(compact);
                     var compactJSON = JSON.stringify(compact);
-                    console.log(compactJSON);
+                    //console.log(compactJSON);
                     var cookies = giveMeCookies();
-                    requestAjax.open("POST","../json/com_compact.json?",true)//Abrimos de forma sincrona, para que continue una vez este abierto
+                    console.log("Nombre del usuario: " + cookies[1]);
+                    requestAjax.open("POST","../json/com_saveSession.php",true)//Abrimos de forma sincrona, para que continue una vez este abierto
                     requestAjax.send("compact=" + compactJSON + "&user=" + cookies[1]);
                     
                   }
