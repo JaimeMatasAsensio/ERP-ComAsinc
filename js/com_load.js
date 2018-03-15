@@ -342,7 +342,10 @@ function saveSessionOnServer()
                     console.log("Nombre del usuario: " + cookies[1]);
                     requestAjax.open("POST","../json/com_saveSession.php",true)//Abrimos de forma sincrona, para que continue una vez este abierto
                     requestAjax.send("compact=" + compactJSON + "&user=" + cookies[1]);
-                    
+                    requestAjax.onreadystatechange = function(){//Cuando la solicitud recibe la respuesta...
+                      if (this.readyState == 4 && this.status == 200){
+                        console.log("Sesion Guardada")
+                      }
                   }
                 };
 
